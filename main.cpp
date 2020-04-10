@@ -1,3 +1,4 @@
+#include "histogram.h"
 #include <iostream>
 #include <vector>
 
@@ -13,25 +14,9 @@ vector<double> input_numbers(size_t count)
     return result;
 }
 
-void find_minmax(const vector<double>& numbers,double& min,double& max)
-{
-    min = numbers[0];
-    max = numbers[0];
-    for (double number : numbers)
-    {
-        if (number < min)
-        {
-            min = number;
-        }
-        if (number > max)
-        {
-            max = number;
-        }
-    }
-}
-
 vector<size_t> make_histogram(const vector<double>& numbers, size_t count)
-{   double min=0;
+{
+    double min=0;
     double max=0;
     find_minmax(numbers, min, max);
     vector<size_t> bins(count);
@@ -62,7 +47,7 @@ void show_histogram_text(const vector<size_t>& bins)
     const bool scaling_needed = max_count > MAX_ASTERISK;
 
     for (size_t bin : bins)
-        {
+    {
         if (bin < 100)
         {
             cout << ' ';
@@ -102,7 +87,7 @@ void svg_end()
     cout << "</svg>\n";
 }
 
-void svg_text(double left,double baseline , string text)
+void svg_text(double left,double baseline, string text)
 {
     cout<< "<text x='" << left << "' y='" << baseline << "'>'"<< text << "'</text>";
 }
@@ -124,13 +109,13 @@ void show_histogram_svg(const vector<size_t>& bins)
     svg_begin(IMAGE_WIDTH, IMAGE_HEIGHT);
     double top=0;
     for(size_t bin:bins)
-        {
-            const double bin_width =BLOCK_WIDTH*bin;
-            svg_text(TEXT_LEFT,top+TEXT_BASELINE,to_string(bin));
-            svg_rect(TEXT_WIDTH,top,bin_width,BIN_HEIGHT);
-            top+=BIN_HEIGHT;
-        }
-        svg_end();
+    {
+        const double bin_width =BLOCK_WIDTH*bin;
+        svg_text(TEXT_LEFT,top+TEXT_BASELINE,to_string(bin));
+        svg_rect(TEXT_WIDTH,top,bin_width,BIN_HEIGHT);
+        top+=BIN_HEIGHT;
+    }
+    svg_end();
 }
 
 int main()
@@ -144,7 +129,7 @@ int main()
     cerr << "Enter column count: ";
     cin >> bin_count;
 
-    const auto bins =make_histogram(numbers, bin_count);
+    const auto bins = make_histogram(numbers, bin_count);
 
     show_histogram_svg(bins);
 
