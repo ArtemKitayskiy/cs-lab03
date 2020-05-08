@@ -1,4 +1,5 @@
 #include "histogram.h"
+#include "svg.h"
 #include <iostream>
 #include <vector>
 
