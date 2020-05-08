@@ -1,16 +1,16 @@
 # depslib dependency file v1.0
-1588936033 source:c:\users\zver\desktop\lab03\project\lab03\main.cpp
+1588940236 source:c:\users\zver\desktop\lab03\project\lab03\main.cpp
 	<curl/curl.h>
 	"histogram.h"
 	"svg.h"
 	<iostream>
 	<vector>
 
-1588928852 c:\users\zver\desktop\lab03\project\lab03\histogram.h
+1588938699 c:\users\zver\desktop\lab03\project\lab03\histogram.h
 	<string>
 	<vector>
 
-1588928845 source:c:\users\zver\desktop\lab03\project\lab03\histogram.cpp
+1588938694 source:c:\users\zver\desktop\lab03\project\lab03\histogram.cpp
 	"histogram.h"
 	<vector>
 	<iostream>
@@ -34,11 +34,11 @@
 	<string>
 	<vector>
 
-1588922212 c:\users\zver\desktop\lab03\project\lab03\svg.h
+1588938712 c:\users\zver\desktop\lab03\project\lab03\svg.h
 	<string>
 	<vector>
 
-1588922194 source:c:\users\zver\desktop\lab03\project\lab03\svg.cpp
+1588938708 source:c:\users\zver\desktop\lab03\project\lab03\svg.cpp
 	"svg.h"
 	<vector>
 	<iostream>
