@@ -17,21 +17,21 @@ vector<double> input_numbers(istream&in, size_t count)
     vector<double> result(count);
     for (size_t i = 0; i < count; i++)
     {
-        cin >> result[i];
+        in >> result[i];
     }
     return result;
 }
 
-vector<size_t> make_histogram(const vector<double>& numbers, size_t count)
+vector<size_t> make_histogram(struct Input Input)
 {
     double min=0;
     double max=0;
-    find_minmax(numbers, min, max);
-    vector<size_t> bins(count);
-    for (double number : numbers)
+    find_minmax(Input, min, max);
+    vector<size_t> bins(Input.bin_count);
+    for (double number : Input.numbers)
     {
-        size_t bin = (size_t)((number - min) / (max - min) * count);
-        if (bin == count)
+        size_t bin = (size_t)((number - min) / (max - min) * Input.bin_count);
+        if (bin == Input.bin_count)
         {
             bin--;
         }
@@ -91,15 +91,15 @@ read_input(istream& in)
     data.numbers = input_numbers(in, number_count);
     cerr << "Enter column count: ";
     size_t bin_count;
-    cin >>data.bin_count;
+    cin >>bin_count;
+    data.bin_count=bin_count;
     return data;
 }
 
 int main()
 {
-    Input data;
-    data=read_input(cin);
-    const auto bins =make_histogram(data.numbers, data.bin_count);
+    const auto Input = read_input(cin);
+    const auto bins =make_histogram(Input);
     show_histogram_svg(bins);
     return 0;
 }
