@@ -37,6 +37,8 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="main.cpp" />
+		<Unit filename="svg.cpp" />
+		<Unit filename="svg.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
