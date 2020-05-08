@@ -110,12 +110,17 @@ int main(int argc, char* argv[])
 {
     if(argc>1)
     {
-         CURL* curl =curl_easy_init();
-         CURLcode res;
-         curl_easy_setopt(curl, CURLOPT_URL, argv[1]);
-         res = curl_easy_perform(curl);
-         curl_easy_cleanup(curl);
-         return 0;
+        CURL* curl =curl_easy_init();
+        CURLcode res;
+        curl_easy_setopt(curl, CURLOPT_URL, argv[1]);
+        if(CURLE_OK==1)
+        {
+            cout << curl_easy_strerror(curl_easy_perform(curl));
+            exit(1);
+        }
+        res = curl_easy_perform(curl);
+        curl_easy_cleanup(curl);
+        return 0;
     }
     curl_global_init(CURL_GLOBAL_ALL);
     const auto Input = read_input(cin, true);
