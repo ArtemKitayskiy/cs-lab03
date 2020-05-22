@@ -82,17 +82,20 @@ download(const string& address)
 {
     stringstream buffer;
     CURL* curl =curl_easy_init();
-    CURLcode res;
-    curl_easy_setopt(curl, CURLOPT_URL, address.c_str());
-    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
-    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
-    res = curl_easy_perform(curl);
-    if(res!=CURLE_OK)
+    if(curl)
     {
-        cout << curl_easy_strerror(curl_easy_perform(curl));
-        exit(1);
+        CURLcode res;
+        curl_easy_setopt(curl, CURLOPT_URL, address.c_str());
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
+        res = curl_easy_perform(curl);
+        if(res!=CURLE_OK)
+            {
+                cout << curl_easy_strerror(curl_easy_perform(curl));
+                exit(1);
+            }
+        curl_easy_cleanup(curl);
     }
-    curl_easy_cleanup(curl);
     return read_input(buffer, false);
 }
 
