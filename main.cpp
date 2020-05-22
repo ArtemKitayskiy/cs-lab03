@@ -80,10 +80,16 @@ int main()
     DWORD dwVersion = 0;
     dwVersion = GetVersion();
     DWORD info = GetVersion();
-    DWORD mask = 0b00000000'00000000'11111111'11111111;
+    DWORD mask = 0x0000ffff;
+    DWORD platform = info >> 16;
     DWORD version = info & mask;
+    DWORD mask_major = 0b00000000'00000000'00000000'11111111;
+    DWORD version_major = version & mask_major;
+    DWORD version_minor = version >> 8;
     printf("Win 16-x version is %x\n", version);
     printf("Win decimal-version is %u\n", version);
+    printf("Win major version is %x\n", version_major);
+    printf("Win minor version is %u\n", version_minor);
 
     size_t number_count;
     cerr << "Enter number count: ";
