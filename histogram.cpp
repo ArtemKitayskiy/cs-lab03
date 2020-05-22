@@ -1,6 +1,11 @@
 #include "histogram.h"
 #include <vector>
 #include <iostream>
+#include <windows.h>
+#include <string>
+#include <sstream>
+
+
 using namespace std;
 
 struct Input

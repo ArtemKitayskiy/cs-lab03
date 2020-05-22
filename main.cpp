@@ -5,6 +5,10 @@
 #include <curl/curl.h>
 #include <sstream>
 #include <string>
+#include <cstdio>
+#include <windows.h>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -68,14 +72,8 @@ read_input(istream& in, bool prompt)
     return data;
 }
 
-size_t write_data(void* items, size_t item_size, size_t item_count, void* ctx)
-{
-    stringstream* buffer = reinterpret_cast<stringstream*>(ctx);
-    const char* char_items = reinterpret_cast<const char*>(items);
-    size_t data_size = item_size * item_count;
-    buffer->write(char_items, data_size);
-    return data_size;
-}
+size_t write_data(void* items, size_t item_size, size_t item_count, void* ctx);
+
 
 Input
 download(const string& address)
@@ -86,7 +84,6 @@ download(const string& address)
     {
         CURLcode res;
         curl_easy_setopt(curl, CURLOPT_URL, address.c_str());
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
         res = curl_easy_perform(curl);
         if(res!=CURLE_OK)
