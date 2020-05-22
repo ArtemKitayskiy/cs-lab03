@@ -2,6 +2,8 @@
 #include "svg.h"
 #include <iostream>
 #include <vector>
+#include <cstdio>
+#include <windows.h>
 
 using namespace std;
 
@@ -75,6 +77,8 @@ void show_histogram_text(const vector<size_t>& bins)
 
 int main()
 {
+    printf("WinVersion  %x\n", GetVersion());
+    printf("WinVersion  %u\n", GetVersion());
     size_t number_count;
     cerr << "Enter number count: ";
     cin >> number_count;
