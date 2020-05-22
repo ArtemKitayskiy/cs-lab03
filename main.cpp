@@ -77,8 +77,14 @@ void show_histogram_text(const vector<size_t>& bins)
 
 int main()
 {
-    printf("WinVersion  %x\n", GetVersion());
-    printf("WinVersion  %u\n", GetVersion());
+    DWORD dwVersion = 0;
+    dwVersion = GetVersion();
+    DWORD info = GetVersion();
+    DWORD mask = 0b00000000'00000000'11111111'11111111;
+    DWORD version = info & mask;
+    printf("Win 16-x version is %x\n", version);
+    printf("Win decimal-version is %u\n", version);
+
     size_t number_count;
     cerr << "Enter number count: ";
     cin >> number_count;
