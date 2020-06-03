@@ -32,6 +32,7 @@ vector<size_t> make_histogram(const vector<double>& numbers, size_t count)
     }
     return bins;
 }
+/*
 void show_histogram_text(const vector<size_t>& bins)
 {
     const size_t SCREEN_WIDTH = 80;
@@ -72,6 +73,7 @@ void show_histogram_text(const vector<size_t>& bins)
         cout << '\n';
     }
 }
+*/
 
 int main()
 {

@@ -8,20 +8,17 @@
 	<string>
 	<vector>
 
-1591195865 source:c:\users\zver\desktop\lab03\project\lab03\test.cpp
+1591112846 source:c:\users\zver\desktop\lab03\project\lab03\main.cpp
 	"histogram.h"
 	"svg.h"
-	<cassert>
-
-1586526717 source:c:\users\zver\desktop\lab03\project\lab03\test2.cpp
-	"histogram.h"
-	<cassert>
+	<iostream>
+	<vector>
 
 1591112862 c:\users\zver\desktop\lab03\project\lab03\svg.h
 	<string>
 	<vector>
 
-1591195922 source:c:\users\zver\desktop\lab03\project\lab03\svg.cpp
+1591186422 source:c:\users\zver\desktop\lab03\project\lab03\svg.cpp
 	"svg.h"
 	<vector>
 	<iostream>
