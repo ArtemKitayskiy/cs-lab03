@@ -81,6 +81,7 @@ Input
 download(const string& address)
 {
     stringstream buffer;
+    char *ip;
     CURL* curl =curl_easy_init();
     if(curl)
     {
@@ -89,11 +90,14 @@ download(const string& address)
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
         res = curl_easy_perform(curl);
+
         if(res!=CURLE_OK)
             {
                 cout << curl_easy_strerror(curl_easy_perform(curl));
                 exit(1);
             }
+        curl_easy_getinfo(curl, CURLINFO_PRIMARY_IP, &ip);
+        cerr << "IP:" << ip;
         curl_easy_cleanup(curl);
     }
     return read_input(buffer, false);
